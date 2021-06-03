@@ -8,7 +8,6 @@
  *                                                                                           *
  ******************************************************************************************* */
 
-
 /**
  * Returns the regexp that matches a GUID string representation
  * '{XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX}',
@@ -35,7 +34,6 @@ function getRegexForGuid() {
   throw new Error('Not implemented');
 }
 
-
 /**
  * Returns the regexp that matches all the strings from first column
  * but of them from the second
@@ -54,9 +52,8 @@ function getRegexForGuid() {
  *
  */
 function getRegexForPitSpot() {
-  throw new Error('Not implemented');
+  return /(i|s)/;
 }
-
 
 /**
  * Returns the password validator regex.
@@ -78,10 +75,11 @@ function getRegexForPitSpot() {
  *   'PASSW0RD'.match(validator)  => false
  *   'Pa55'.match(validator) => false
  */
-function getPasswordValidator(/* minLength */) {
-  throw new Error('Not implemented');
+function getPasswordValidator(minLength) {
+  return new RegExp(
+    `^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9_]{${minLength},}$`,
+  );
 }
-
 
 module.exports = {
   getRegexForGuid,
